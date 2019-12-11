@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const getAllFiles = dir =>
+const getAllFiles = (dir = process.cwd()) =>
     fs.readdirSync(dir).reduce((files, file) => {
 			const name = path.join(dir, file);
 			if (!name.includes('node_modules')) {
@@ -17,4 +17,4 @@ const getAllFiles = dir =>
 			return files;
 		}, []);
 	
-module.exports = getAllFiles(process.cwd());
+module.exports = getAllFiles;
